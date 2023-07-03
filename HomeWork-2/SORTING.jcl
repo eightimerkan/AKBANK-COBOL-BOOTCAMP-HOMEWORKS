@@ -1,10 +1,22 @@
 //SORTREPR JOB ' ',CLASS=A,MSGLEVEL=(1,1),
 //         MSGCLASS=X,NOTIFY=&SYSUID
+
+//* Yorum satırlarında problem oluyor diye tüm satırları buraya yazdım.
+//*Bu satır, SORTREPR adında bir JOB tanımlaması başlatır. CLASS=A, MSGLEVEL=
+//*çıktıların nereye gönderileceğini ve kimin bilgilendirileceğini belirler.
+//* Bu bölüm, IDCAMS programıyla bir veri kümesini silmek için kullanılır. &SYSU
+//* Ardından, eğer son komut kodu (LASTCC) 08'den küçükse, MAXCC değişkenine 00 
+//*Bu bölümde, SORT programı çalıştırılır. SORTIN veri kümesine girilen kayıtlar
+//*Bu örnekte, SORTIN veri kümesi elle girilen verileri içerir.
+//*Bu bölümde, SORTOUT veri kümesi tanımlanır. &SYSUID..QSAM.AA veri kümesi olar
+//* Veri kümesinin alanı (space) 5 silindir (track) olarak belirlenir. DCB param
+//*SYSIN bölümünde ise "SORT FIELDS=COPY" komutu verilir
+
 //DELET100 EXEC PGM=IDCAMS 
 //SYSPRINT DD SYSOUT=*
 //SYSIN    DD *
    DELETE &SYSUID..QSAM.AA NONVSAM
-   IF LASTCC LE 08 THEN SET MAXCC = 00 
+   IF LASTCC LE 08 THEN SET MAXCC = 00
 //SORT0200 EXEC PGM=SORT
 //SYSOUT   DD SYSOUT=*
 //SORTIN   DD *
