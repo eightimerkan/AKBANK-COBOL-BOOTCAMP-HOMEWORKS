@@ -1,7 +1,5 @@
 # AKBANK-COBOL-BOOTCAMP-HOMEWORKS - 3
 
-
-
 FILTER JCL
 
 DELET000 adında bir adım başlatılır ve IEFBR14 programı çalıştırılır. Bu adımda, THEFILE adında bir veri kümesi silinir.
